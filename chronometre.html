@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title> CHRONOMETRE </title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var nb=0 ;
+			var timer=setInterval("Chrono()", 1000);
+
+			function Chrono()
+			{
+				document.getElementById('chrono').innerHTML=nb;
+				nb++ ;
+			}
+
+			function Clear()
+			{
+
+				if(document.getElementById('start').value=='Arreter le compteur')
+				{
+					document.getElementById('start').value='Relancer le compteur';
+					clearTimeout(timer);
+				}
+				else
+				{
+					document.getElementById('start').value='Arreter le compteur';
+					timer=setInterval("Chrono()", 1000) ;
+				}
+
+			}
+
+			function Reset()
+			{
+				nb=0;
+			}
+		</script>
+
+		<form method='POST' name='Chronometre'>
+			<p id='chrono'>&nbsp;</p>
+			<input type='button' name='restart' value='recommencer' onClick='Reset()'/>
+			<input type='button' id='start' value='Arreter le compteur' onClick='Clear()'/>
+		</form>
+	</body>
+</html>
